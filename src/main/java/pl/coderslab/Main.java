@@ -8,23 +8,19 @@ public class Main {
     public static void main(String[] args) {
 
         display(POSSIBLE_POSITIONS);
-        while (hasTheGameBeenWon().equals("no")) {
+        while (!hasTheGameBeenWon().equals("X") && !hasTheGameBeenWon().equals("O")) {
             chooseWhereToPutX();
             if (EXCLUDED_POSITIONS.size() < 9) {
                 randomPositionToPutO();
             }
             display(ACTUAL_POSITIONS);
-            if (hasTheGameBeenWon().equals("X")) {
-                System.out.println("Congratulations, you won!");
-                break;
-            }
-            if (hasTheGameBeenWon().equals("O")) {
-                System.out.println("Unfortunately this time the computer turned out to be the winner.");
-                break;
-            }
-            if (EXCLUDED_POSITIONS.size() == 9) {
-                System.out.println("No winner has been determined.");
-            }
+        }
+        if (hasTheGameBeenWon().equals("X")) {
+            System.out.println("Congratulations, you won!");
+        } else if (hasTheGameBeenWon().equals("O")) {
+            System.out.println("Unfortunately this time the computer turned out to be the winner.");
+        } else if (EXCLUDED_POSITIONS.size() == 9) {
+            System.out.println("No winner has been determined.");
         }
     }
 
